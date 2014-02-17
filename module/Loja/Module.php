@@ -13,8 +13,11 @@ use Zend\Authentication\AuthenticationService,
 use Loja\Model\CategoriaTable;
 use Loja\Service\Categoria as CategoriaService;
 use Loja\Service\Instrumento as InstrumentoService;
+use Loja\Service\Musico as MusicoService;
 use Loja\Service\User as UserService;
 use LojaAdmin\Form\Instrumento as InstrumentoFrm;
+use LojaAdmin\Form\Musico as MusicoFrm;
+
 
 use Loja\Auth\Adapter as AuthAdapter;
 
@@ -49,7 +52,7 @@ class Module {
     
     public function init(ModuleManager $moduleManager) {
          $shareEvents = $moduleManager->getEventManager()->getSharedManager();
-         $shareEvents->attach("LojaAdminAuth", 'dispatch', function($e) {
+         $shareEvents->attach("LojaAdmin", 'dispatch', function($e) {
             $auth = new AuthenticationService;
             $auth->setStorage(new SessionStorage("LojaAdmin"));
             
@@ -77,6 +80,9 @@ class Module {
                  'Loja\Service\Instrumento' => function($service) {
                     return new InstrumentoService($service->get('Doctrine\ORM\EntityManager'));
                 },
+                  'Loja\Service\Musico' => function($service) {
+                    return new MusicoService($service->get('Doctrine\ORM\EntityManager'));
+                },      
                   'Loja\Service\User' => function($service) {
                     return new UserService($service->get('Doctrine\ORM\EntityManager'));
                 },      
@@ -86,6 +92,13 @@ class Module {
                     $categorias = $repository->fetchPairs();
                     return new InstrumentoFrm(null, $categorias);
                 },
+                  'LojaAdmin\Form\Musico' => function($service) {
+                    $em = $service->get('Doctrine\ORM\EntityManager');
+                    $repository = $em->getRepository('Loja\Entity\Categoria');
+                    $categorias = $repository->fetchPairs();
+                    return new MusicoFrm(null, $categorias);
+                },
+                       
                   'Loja\Auth\Adapter' => function($service) {
                     return new AuthAdapter($service->get('Doctrine\ORM\EntityManager'));
                 },      
