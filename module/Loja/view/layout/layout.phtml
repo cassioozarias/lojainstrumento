@@ -25,7 +25,13 @@
         ; ?>
 
     </head>
-    <body>
+    <body class="<?php
+            if($this->UserIdentity('LojaAdmin')){ 
+                echo "body_admin" ;
+            }else{
+                echo "body_noadmin" ;
+            }
+            ?>">
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
