@@ -3,10 +3,24 @@ body {
     color: white;
     padding-top: 60px;
     padding-bottom: 40px;
-    
+}
+
+.body_admin{
+    background-color: black;
     background-image: url("/img/images2.jpg");
+    background-position: 200pt -75pt;
+    background-repeat: no-repeat;
+    background-size: 75% auto;
+    
+}
+
+.body_noadmin{
+    
+    background-image: url("/img/guitar.jpeg");
+    background-position: 0pt 0pt;
     background-repeat: no-repeat;
     background-size: 100% auto;
+    
 }
 
 .zf-green {
