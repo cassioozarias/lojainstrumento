@@ -75,10 +75,10 @@ class Categoria extends \Loja\Entity\Categoria implements \Doctrine\ORM\Proxy\Pr
         return parent::__toString();
     }
 
-    public function getInstrumentos()
+    public function getinstrumentos()
     {
         $this->__load();
-        return parent::getInstrumentos();
+        return parent::getinstrumentos();
     }
 
     public function toArray()

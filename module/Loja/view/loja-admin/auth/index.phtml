@@ -6,6 +6,7 @@
 <p><b>Usuário ou senha inválidos</b></p>
 <?php endif; ?>
 
+<label class="um">
 <?php
 $form = $this->form; 
 
@@ -17,4 +18,4 @@ echo $this->formRow($form->get('email')). "<br />";
 echo $this->formRow($form->get('password')). "<br />";
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();
-?> 
+?> </label>

@@ -29,7 +29,6 @@ class User extends Form {
                'placeholder' => 'Entre com o nome'
            ) 
         ));
-        
         $this->add(array(
             'name' => 'email',
             'options' =>array(
